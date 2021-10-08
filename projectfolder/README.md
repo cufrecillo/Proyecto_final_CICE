@@ -22,7 +22,7 @@
  
  4. Permitir al usuario cambiar de Pokemon y que respete el HP disminuido en el combate.
 
- 5. Permitir elegir lista de Pokemons (en construccion)
+ 5. Permitir elegir lista de Pokemons.
 
  6. Hacer un torneo o una serie de combates para que el juego sea mas largo (en construccion)
 
