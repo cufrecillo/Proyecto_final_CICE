@@ -1,16 +1,37 @@
 #from pokemons import *
+import random
 
 texto_1 = "Oak: Bienvenido al MUNDO POKEMON!!!\nTienes que seleccionar 3 Pokemon para poder combatir contra tu contrincante...."
 
 def inicio(pokemons_list):
     print("----------------")
+    select_pokemon = 3
+    pokemons_playerA = []
+    pokemons_playerB = []
     print(texto_1)
     wait = input(" ")
     rest_pokemons = pokemons_list.copy()
     print(f"Pokemons disponibles : ({len(pokemons_list)})")
-    [print(f"{i+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for i, pokemon in enumerate(rest_pokemons)]
+    #[print(f"{i+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for i, pokemon in enumerate(rest_pokemons)]
     wait = input(" ")
+    for i in range (select_pokemon):
+        [print(f"{j+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for j, pokemon in enumerate(rest_pokemons)]
+        user = int(input(f"Pokemon numero {i+1}: "))
+        pokemons_playerA.append(rest_pokemons[user-1])
+        rest_pokemons.pop(user-1)
+        print("----------------")
+        rival = random.randrange(len(rest_pokemons))
+        print(rest_pokemons[rival-1])
+        pokemons_playerB.append(rest_pokemons[rival-1])
+        rest_pokemons.pop(rival-1)
+        print("----------------")
+    print("Tus Pokemons: ")
+    [print(f"{j+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for j, pokemon in enumerate(pokemons_playerA)]
     print("----------------")
+    print("Pokemosn del rival")
+    [print(f"{j+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for j, pokemon in enumerate(pokemons_playerB)]
+    print("----------------")
+    return(pokemons_playerA, pokemons_playerB)
 
 def menu_combat():
     print("1. Atacar")

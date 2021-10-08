@@ -2,18 +2,19 @@ from pokemons import *
 from funs import *
 
 print(" POKEMON ".center(50, "#"))
-inicio(pokemons)
+# inicio(pokemons)
 # CREAR OPCION AL INICIO PARA ELEGIR POKEMONS
 
-pokemons_playerA = [charmander, squirtle, meganium]
-pokemons_playerB = [bulbasaur, vulpix, golduck]
+# pokemons_playerA = [charmander, squirtle, meganium]
+# pokemons_playerB = [bulbasaur, vulpix, golduck]
+
+pokemons_playerA, pokemons_playerB = inicio(pokemons)
 
 pokemon_a = random.choice(pokemons_playerA)
 pokemon_b = random.choice(pokemons_playerB)
 print(pokemon_a)
 print("----------------")
 print(pokemon_b)
-
 
 cont_turnos = 0
 pokemon_alive = True
