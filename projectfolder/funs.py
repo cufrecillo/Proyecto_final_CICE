@@ -1,6 +1,9 @@
 #from pokemons import *
 import random
 import os
+import json
+
+CWD = os.path.dirname(__file__)
 
 title_game = " POKEMON ".center(50, "#")
 texto_1 = "Oak: Bienvenido al MUNDO POKEMON!!!\nTienes que seleccionar 3 Pokemon para poder combatir contra tu contrincante...."
@@ -19,10 +22,8 @@ def menu_principal():
 
 def menu_usuario():
     print(" MENU USUARIOS ".center(50, "#"))
-    print("1. Login")
-    print("2. Alta usuario")
-    print("3. Baja usuario")
-    print("4. Cambiar contraseña")
+    print("1. Alta usuario")
+    print("2. Log in")
     print("Q. Quitar")
     print("----------------")
     user = input("Opcion: ")
@@ -155,3 +156,10 @@ def turno_pj(pokemons_player, pokemon_atack, pokemon_defen, cont_turnos, option_
         option_submenu_ok = False
     return option_submenu_ok, pokemon_atack
 
+def read_json(json_file):
+    with open(f"{CWD}/{json_file}", encoding="utf8") as file:
+        return json.load(file)
+
+def create_user(users_names, json_file):
+    with open(f"{CWD}/{json_file}", "w", encoding="utf8") as file:
+        json.dump(users_names, file, ensure_ascii=False, indent=4)

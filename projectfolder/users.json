@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "name": "admin",
+            "pwd": "$2b$12$Alq9xGGV8y6iRHaLhOSweu2FtiAqNj3Ssfr0eoYEI0r0RP6YCJO.m",
+            "user_since": "2021-07-30"
+        },
+        {
+            "name": "test",
+            "pwd": "$2b$12$XeNbD7Yr3h1xTQ4f6EmsPOpTcw0xU6cLcuR3vb70IzF3yNeJfJOGW",
+            "user_since": "2021-07-30"
+        },
+        {
+            "name": "prueba",
+            "pwd": "$2b$12$c8FHRMQ0zZVIr45l24yP2e4y3LVd7cEDL9sWYRtA4kaaWcjU5usRS",
+            "user_since": "2021-07-30"
+        },
+        {
+            "name": "momo",
+            "pwd": "$2b$12$50d93nzfGA3.ofTyz6JaIOS3cDQ05Aj0y09dIOd2/G82heFFegdGe",
+            "user_since": "2021-11-20"
+        }
+    ]
+}
