@@ -28,6 +28,21 @@ def menu_usuario():
     user = input("Opcion: ")
     return user
 
+def validate_inicio(valor, total_pokemons):
+    try:
+        entero = int(valor)
+        if entero >= 1 and entero <= total_pokemons:
+            validate = True
+            return validate
+        else:
+            pass
+            validate = False
+            return validate
+    except ValueError:
+        pass
+        validate = False
+        return validate
+
 def inicio(pokemons_list):
     limpiar()
     print(title_game)
@@ -41,12 +56,17 @@ def inicio(pokemons_list):
     #[print(f"{i+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for i, pokemon in enumerate(rest_pokemons)]
     wait = input(" ")
     for i in range (select_pokemon):
-        
-        limpiar()
-        print(title_game)
-        [print(f"{j+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for j, pokemon in enumerate(rest_pokemons)]
-        user = int(input(f"Pokemon numero {i+1}: "))
-        
+        validate = False
+        while validate == False:
+            limpiar()
+            print(title_game)
+            [print(f"{j+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for j, pokemon in enumerate(rest_pokemons)]
+            user = input(f"Pokemon numero {i+1}: ")
+            validate = validate_inicio(user, len(rest_pokemons))
+            if not validate:
+                print('\nLo siento, el valor no es valido, vuelva a intentarlo...')
+                wait = input("")
+        user = int(user)
         pokemons_playerA.append(rest_pokemons[user-1])
         rest_pokemons.pop(user-1)
         limpiar()
@@ -58,12 +78,11 @@ def inicio(pokemons_list):
         rest_pokemons.pop(rival-1)
         print("----------------")
         wait = input(" ")
-        #limpiar()
     limpiar()
     print(title_game)
     print("TUS POKEMONS: ")
     [print(f"{j+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for j, pokemon in enumerate(pokemons_playerA)]
-    
+    print("----------------")
     print("POKEMONS DEL RIVAL")
     [print(f"{j+1}. {pokemon.name} - HP: {pokemon.HP} - {pokemon.element}") for j, pokemon in enumerate(pokemons_playerB)]
     print("----------------")
@@ -71,30 +90,53 @@ def inicio(pokemons_list):
     return(pokemons_playerA, pokemons_playerB)
 
 def menu_combat():
-    print("----------------")
-    print("1. Atacar")
-    print("2. Cambiar Pokemon")
-    option_menu_combat = int(input("Opcion: "))-1
+    validate = False
+    while validate == False:
+        limpiar()
+        print("----------------")
+        print("1. Atacar")
+        print("2. Cambiar Pokemon")
+        option_menu_combat = input("Opcion: ")
+        if option_menu_combat == '1' or option_menu_combat == '2':
+            validate = True
+            option_menu_combat = int(option_menu_combat)-1
+        else:
+            print('\nLo siento, el valor no es valido, vuelva a intentarlo...')
+            wait = input("")
     return option_menu_combat
 
 def combat(pokemon_atack, pokemon_defen):
-    print("----------------")
-    print(f"Ataca: {pokemon_atack.name}")
-    print("Elige un ataque de tu pokemon:")
-    for i, attack in enumerate(pokemon_atack.attacks):
-        print(f"{i+1}. {attack}")
-    user = int(input("Opcion: ")) - 1
+    validate = False
+    while validate == False:
+        print("----------------")
+        print(f"Ataca: {pokemon_atack.name}")
+        print("Elige un ataque de tu pokemon:")
+        for i, attack in enumerate(pokemon_atack.attacks):
+            print(f"{i+1}. {attack}")
+        user = input("Opcion: ")
+        validate = validate_inicio(user, len(pokemon_atack.attacks))
+        if not validate:
+                print('\nLo siento, el valor no es valido, vuelva a intentarlo...')
+                wait = input("")
+    user = int(user)-1
     pokemon_defen.recive_damage(pokemon_atack.attacks[user])
     print("----------------")
     print(pokemon_defen)
 
 def change_pokemon(pokemons_player, pokemon_atack):
-    print("----------------")
     rest_pokemons = pokemons_player.copy()
     rest_pokemons.remove(pokemon_atack)
-    print("Tus pokemos:")
-    [print(f"{i+1}. {pokemon.name}") for i, pokemon in enumerate(rest_pokemons)]
-    user = int(input("Pokemon: "))-1
+    validate = False
+    while validate == False:
+        print("----------------")
+        print("Tus pokemos:")
+        [print(f"{i+1}. {pokemon.name}") for i, pokemon in enumerate(rest_pokemons)]
+        user = input("Pokemon: ")
+        validate = validate_inicio(user, len(rest_pokemons))
+        if not validate:
+            print('\nLo siento, el valor no es valido, vuelva a intentarlo...')
+            wait = input("")
+    user = int(user)-1
     pokemon_change = rest_pokemons[user]
     print("----------------")
     print(f"Has cambiado a {rest_pokemons[user]}")
@@ -102,7 +144,6 @@ def change_pokemon(pokemons_player, pokemon_atack):
 
 def turno_pj(pokemons_player, pokemon_atack, pokemon_defen, cont_turnos, option_submenu_ok):
     limpiar()
-    # print(title_game)
     print("----------------")
     print(f"TURNO:{cont_turnos} --- {pokemon_atack.name}")
     option_menu_combat = menu_combat()

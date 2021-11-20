@@ -14,14 +14,10 @@ while salir == False:
         while salir_usuarios == False:
             limpiar()
             user_option_user = menu_usuario()
-            if user_option_user == '1': # Login
+            if user_option_user == '1': # Crear usuario
+                print("En construccion...crar usuario")
+            elif user_option_user == '2': # log in
                 print("En construccion...login")
-            elif user_option_user == '2': # logout
-                print("En construccion...logout")
-            elif user_option_user == '3': # alta
-                print("En construccion...altas")
-            elif user_option_user == '4': # baja
-                print("En construccion...bajas")
             elif user_option_user.upper() == 'Q': # exit
                 print("Cerrando menu users...")
                 wait = input("")
