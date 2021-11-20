@@ -1,8 +1,5 @@
  ### Pokemon
 
- * https://pokeapi.co/ 
- * types: fire, grass, water
-
  1. Crear clase Pokemon con los siguientes atributos y métodos
 	* name
 	* type
@@ -18,16 +15,36 @@
 
  3. Crear un pequeño menú que permita simular una batalla pokemon
 
- Ampliado:
- 
+
  4. Permitir al usuario cambiar de Pokemon y que respete el HP disminuido en el combate.
+
 
  5. Permitir elegir lista de Pokemons.
 
- 6. Hacer un torneo o una serie de combates para que el juego sea mas largo (en construccion)
 
- 7. Al pasar a la siguiente pelea, los pokemons deben recuperar su PH originales (en construccion)
+6. Menu Usuario para alta y login
+	* acceso mediante token al juego
+	* si el usuario no esta logado y con un tiempo controlado, no permite el acceso
 
- 8. Crear experiencia a los pokemons utilizados al terminar un combate (en construccion)
 
- 9. Al finalizar el combate dar la opcion de capturar al pokemon con una cierta probabilidad
+main.py
+Menu principal con acceso a USUARIOS y JUEGO.
+Se controla el alta y login de USUARIOS.
+
+
+gba.py
+Se desarrolla todo el juego, control de turnos y victoria.
+
+
+funs.py
+Todas las funciones necesarias para el desarrollo del proyecto.
+
+
+pokemons.py
+Clase pokemon, clase ataque y creacion de personajes.
+
+requirements.tex
+librerias necesarias
+
+users.json
+archivo con los usuarios creados
