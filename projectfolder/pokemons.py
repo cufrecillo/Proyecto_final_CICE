@@ -38,8 +38,8 @@ class Pokemon:
 
     def recive_damage(self, attack):
         damage = random.randint(0, attack.damage)
-        print(attack.element)
-        print(self.element)
+        # print(attack.element)
+        # print(self.element)
         if self.element == attack.element:
             damage_final = damage
             self.HP -= damage_final
@@ -65,6 +65,7 @@ class Pokemon:
                 elif self.element == "grass":
                     damage_final = damage *0.5
                     self.HP -= damage_final
+        print("----------------")
         print(f"{self.name} recibe un daño de: {damage_final}")
         if self.HP <= 0:
             self.is_alive = False
@@ -83,27 +84,30 @@ class Attack:
 
 # elements = ["fire", "grass", "water"]
 # POKEMONS
-charmander = Pokemon("Charmander", elements[0], 120)
-squirtle = Pokemon("Squirtle", elements[2], 140)
-bulbasaur = Pokemon("Bulbasaur", elements[1], 160)
-vulpix = Pokemon("Vulpix", elements[0], 100)
-golduck = Pokemon("Golduck", elements[2], 150)
-meganium = Pokemon("Meganium", elements[1], 170)
+charmander = Pokemon("Charmander", elements[0], random.randrange(100, 170))
+squirtle = Pokemon("Squirtle", elements[2], random.randrange(100, 170))
+bulbasaur = Pokemon("Bulbasaur", elements[1], random.randrange(100, 170))
+vulpix = Pokemon("Vulpix", elements[0], random.randrange(100, 170))
+golduck = Pokemon("Golduck", elements[2], random.randrange(100, 170))
+meganium = Pokemon("Meganium", elements[1], random.randrange(100, 170))
 
 # ATTACKS
-flamethrower = Attack("Flamethrower", elements[0], 40)
-razor_leaf = Attack("Razor_leaf", elements[1], 25)
-surf = Attack("Surf", elements[2], 35)
+flamethrower = Attack("Flamethrower", elements[0], random.randrange(25, 50))
+razor_leaf = Attack("Razor_leaf", elements[1], random.randrange(25, 50))
+surf = Attack("Surf", elements[2], random.randrange(25, 50))
 
 charmander.learn(flamethrower)
 charmander.learn(razor_leaf)
 bulbasaur.learn(razor_leaf)
 bulbasaur.learn(surf)
 squirtle.learn(surf)
+squirtle.learn(flamethrower)
 vulpix.learn(flamethrower)
+vulpix.learn(surf)
 golduck.learn(surf)
 golduck.learn(razor_leaf)
 meganium.learn(razor_leaf)
+meganium.learn(flamethrower)
 
 pokemons = [charmander, squirtle, bulbasaur, vulpix, golduck, meganium]
-print(Pokemon.count)
+#print(Pokemon.count)
