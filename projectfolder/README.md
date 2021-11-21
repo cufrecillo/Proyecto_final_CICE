@@ -28,23 +28,29 @@
 
 
 main.py
+
 Menu principal con acceso a USUARIOS y JUEGO.
 Se controla el alta y login de USUARIOS.
 
 
 gba.py
+
 Se desarrolla todo el juego, control de turnos y victoria.
 
 
 funs.py
+
 Todas las funciones necesarias para el desarrollo del proyecto.
 
 
 pokemons.py
+
 Clase pokemon, clase ataque y creacion de personajes.
 
 requirements.tex
+
 librerias necesarias
 
 users.json
-archivo con los usuarios creados
+
+archivo con los usuarios creados y donde se guardan los nuevos usuarios
